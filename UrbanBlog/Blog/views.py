@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Post
+from .models import *
 
 # Create your views here.
 
@@ -22,3 +22,10 @@ def post_list(request):
         'page_posts': page_posts,
         'posts_per_page': posts_per_page
     })
+def author_list(request):
+    authors = Author.objects.all()
+    return render(request, 'author_list.html', {'authors': authors})
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {'books': books})
